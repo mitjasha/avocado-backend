@@ -1,8 +1,9 @@
-import { Injectable } from "@nestjs/common";
+import { Injectable, NotFoundException } from "@nestjs/common";
 import { RecipesEntity } from "./recipes.entity";
 import { Repository } from "typeorm";
 import { InjectRepository } from "@nestjs/typeorm";
 import { CreateRecipeDto } from "./dto/createRecipe.dto";
+import { UpdateRecipeDto } from "./dto/updateRecipe.dto";
 
 @Injectable()
 export class RecipesService {
@@ -15,8 +16,13 @@ export class RecipesService {
     return await this.recipesRepository.find();
   }
 
-  getRecipeById(id: string) {
-    return "id=" + id;
+  async getRecipeById(id: string): Promise<RecipesEntity> {
+    const found = await this.recipesRepository.findOne({ where: { id } });
+
+    if (!found) {
+      throw new NotFoundException(`Recipe with ID "${id}" not found`);
+    }
+    return found;
   }
 
   async createRecipe(createRecipeDto: CreateRecipeDto): Promise<any> {
@@ -27,7 +33,7 @@ export class RecipesService {
     return await this.recipesRepository.save(newRecipe);
   }
 
-  async updateRecipe(id: string, updateRecipeDto: CreateRecipeDto) {
+  async updateRecipe(id: string, updateRecipeDto: UpdateRecipeDto) {
     return await this.recipesRepository.update(id, updateRecipeDto);
   }
 

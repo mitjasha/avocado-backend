@@ -8,6 +8,7 @@ import {
   Put,
 } from "@nestjs/common";
 import { CreateRecipeDto } from "./dto/createRecipe.dto";
+import { UpdateRecipeDto } from "./dto/updateRecipe.dto";
 import { RecipesEntity } from "./recipes.entity";
 import { RecipesService } from "./recipes.service";
 
@@ -17,6 +18,11 @@ export class RecipesController {
   @Get()
   async findAll(): Promise<RecipesEntity[]> {
     return await this.recipesService.findAll();
+  }
+
+  @Get("/:id")
+  async getRecipeById(@Param("id") id: string): Promise<RecipesEntity> {
+    return this.recipesService.getRecipeById(id);
   }
 
   @Post()
@@ -29,7 +35,7 @@ export class RecipesController {
   @Put("/:id")
   async updateEvent(
     @Param("id") id: string,
-    @Body() updateEventDto: CreateRecipeDto,
+    @Body() updateEventDto: UpdateRecipeDto,
   ) {
     return this.recipesService.updateRecipe(id, updateEventDto);
   }
