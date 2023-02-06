@@ -8,7 +8,7 @@ export class CreateRecipeDto {
   readonly author: string;
   readonly kitchen: string;
   readonly ingredients: object[];
-  readonly steps: string[];
+  readonly steps: string | (() => string);
   readonly time: number;
   readonly imageURL: string;
 }

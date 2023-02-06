@@ -1,4 +1,12 @@
-import { Body, Controller, Delete, Get, Param, Post } from "@nestjs/common";
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  Param,
+  Post,
+  Put,
+} from "@nestjs/common";
 import { CreateRecipeDto } from "./dto/createRecipe.dto";
 import { RecipesEntity } from "./recipes.entity";
 import { RecipesService } from "./recipes.service";
@@ -16,6 +24,14 @@ export class RecipesController {
     @Body("recipe") createRecipeDto: CreateRecipeDto,
   ): Promise<RecipesEntity> {
     return await this.recipesService.createRecipe(createRecipeDto);
+  }
+
+  @Put("/:id")
+  async updateEvent(
+    @Param("id") id: string,
+    @Body() updateEventDto: CreateRecipeDto,
+  ) {
+    return this.recipesService.updateRecipe(id, updateEventDto);
   }
 
   @Delete("/:id")

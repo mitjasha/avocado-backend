@@ -27,6 +27,10 @@ export class RecipesService {
     return await this.recipesRepository.save(newRecipe);
   }
 
+  async updateRecipe(id: string, updateRecipeDto: CreateRecipeDto) {
+    return await this.recipesRepository.update(id, updateRecipeDto);
+  }
+
   async deleteRecipe(id: string) {
     const result = await this.recipesRepository.delete({ id });
     return `event ${id} removed`;
