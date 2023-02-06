@@ -35,8 +35,8 @@ export class RecipesEntity {
   @Column()
   kitchen: string;
 
-  @Column("jsonb", { array: true, nullable: true })
-  ingredients: Ingredients;
+  @Column("jsonb")
+  ingredients: Ingredients[];
 
   @Column({ array: true })
   steps: string;

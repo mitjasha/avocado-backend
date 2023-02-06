@@ -1,5 +1,4 @@
 export class CreateRecipeDto {
-  readonly id: number;
   readonly name: string;
   readonly category: string;
   readonly calories: string;
@@ -8,7 +7,7 @@ export class CreateRecipeDto {
   readonly fats: string;
   readonly author: string;
   readonly kitchen: string;
-  readonly ingredients: { quantity: string; name: string; type: string }[];
+  readonly ingredients: object[];
   readonly steps: string[];
   readonly time: number;
   readonly imageURL: string;

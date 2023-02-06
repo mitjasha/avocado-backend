@@ -20,6 +20,10 @@ export class RecipesService {
   }
 
   async createRecipe(createRecipeDto: CreateRecipeDto): Promise<any> {
-    return createRecipeDto;
+    const newRecipe = new RecipesEntity();
+    Object.assign(newRecipe, createRecipeDto);
+    console.log("newRecipe", newRecipe);
+
+    return await this.recipesRepository.save(newRecipe);
   }
 }
