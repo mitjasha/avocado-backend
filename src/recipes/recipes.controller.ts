@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post } from "@nestjs/common";
+import { Body, Controller, Delete, Get, Param, Post } from "@nestjs/common";
 import { CreateRecipeDto } from "./dto/createRecipe.dto";
 import { RecipesEntity } from "./recipes.entity";
 import { RecipesService } from "./recipes.service";
@@ -14,7 +14,12 @@ export class RecipesController {
   @Post()
   async createRecipe(
     @Body("recipe") createRecipeDto: CreateRecipeDto,
-  ): Promise<any> {
+  ): Promise<RecipesEntity> {
     return await this.recipesService.createRecipe(createRecipeDto);
+  }
+
+  @Delete("/:id")
+  async deleteRecipe(@Param("id") id: string) {
+    return await this.recipesService.deleteRecipe(id);
   }
 }

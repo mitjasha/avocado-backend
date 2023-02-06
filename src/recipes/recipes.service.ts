@@ -26,4 +26,9 @@ export class RecipesService {
 
     return await this.recipesRepository.save(newRecipe);
   }
+
+  async deleteRecipe(id: string) {
+    const result = await this.recipesRepository.delete({ id });
+    return `event ${id} removed`;
+  }
 }
