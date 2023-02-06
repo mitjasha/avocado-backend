@@ -5,9 +5,12 @@ import { configValidationSchema } from "./config.schema";
 import { AppController } from "./app.controller";
 import { AppService } from "./app.service";
 import { RecipesModule } from "./recipes/recipes.module";
+import { AuthController } from "./auth/auth.controller";
+import { AuthModule } from "./auth/auth.module";
 
 @Module({
   imports: [
+    AuthModule,
     RecipesModule,
     ConfigModule.forRoot({
       envFilePath: [`.env.stage.${process.env.STAGE}`],
@@ -38,7 +41,7 @@ import { RecipesModule } from "./recipes/recipes.module";
       },
     }),
   ],
-  controllers: [AppController],
+  controllers: [AppController, AuthController],
   providers: [AppService],
 })
 export class AppModule {}
