@@ -2,6 +2,7 @@ import { Injectable } from "@nestjs/common";
 import { RecipesEntity } from "./recipes.entity";
 import { Repository } from "typeorm";
 import { InjectRepository } from "@nestjs/typeorm";
+import { CreateRecipeDto } from "./dto/createRecipe.dto";
 
 @Injectable()
 export class RecipesService {
@@ -15,6 +16,10 @@ export class RecipesService {
   }
 
   getRecipeById(id: string) {
-    return "one";
+    return "id=" + id;
+  }
+
+  async createRecipe(createRecipeDto: CreateRecipeDto): Promise<any> {
+    return createRecipeDto;
   }
 }
