@@ -8,6 +8,8 @@ import { RecipesModule } from "./recipes/recipes.module";
 import { AuthController } from "./auth/auth.controller";
 import { AuthModule } from "./auth/auth.module";
 import { AuthMiddleware } from "./auth/middleware/auth.middleware";
+import { EventController } from "./event/event.controller";
+import { EventModule } from "./event/event.module";
 
 @Module({
   imports: [
@@ -41,8 +43,9 @@ import { AuthMiddleware } from "./auth/middleware/auth.middleware";
         };
       },
     }),
+    EventModule,
   ],
-  controllers: [AppController, AuthController],
+  controllers: [AppController, AuthController, EventController],
   providers: [AppService],
 })
 export class AppModule {
