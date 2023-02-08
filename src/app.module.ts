@@ -13,6 +13,7 @@ import { EventModule } from "./event/event.module";
 import { EventMealModule } from "./event-meal/event-meal.module";
 import { EventActivityModule } from "./event-activity/event-activity.module";
 import { ProductModule } from "./product/product.module";
+import { ActivityModule } from "./activity/activity.module";
 
 @Module({
   imports: [
@@ -50,6 +51,7 @@ import { ProductModule } from "./product/product.module";
     EventMealModule,
     EventActivityModule,
     ProductModule,
+    ActivityModule,
   ],
   controllers: [AppController, AuthController, EventController],
   providers: [AppService],

@@ -1,8 +1,10 @@
+import { ActivityEntity } from "src/activity/activity.entity";
 import { UserEntity } from "src/auth/user.entity";
 import {
   BeforeUpdate,
   Column,
   Entity,
+  ManyToMany,
   ManyToOne,
   PrimaryGeneratedColumn,
 } from "typeorm";
@@ -28,4 +30,7 @@ export class EventActivityEntity {
 
   @ManyToOne((_type) => UserEntity, (user) => user.id)
   user: UserEntity;
+
+  @ManyToMany(() => ActivityEntity, (products) => products.id)
+  products: ActivityEntity[];
 }
