@@ -1,5 +1,12 @@
 import { UserEntity } from "src/auth/user.entity";
-import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
+import { ProductEntity } from "src/product/product.entity";
+import {
+  Column,
+  Entity,
+  ManyToMany,
+  ManyToOne,
+  PrimaryGeneratedColumn,
+} from "typeorm";
 import { EEventMeal } from "./event-mean.enum";
 
 @Entity({ name: "event-meal" })
@@ -21,4 +28,7 @@ export class EventMealEntity {
 
   @ManyToOne((_type) => UserEntity, (user) => user.id)
   user: UserEntity;
+
+  @ManyToMany(() => ProductEntity, (products) => products.id)
+  products: ProductEntity[];
 }
