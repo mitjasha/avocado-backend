@@ -10,6 +10,9 @@ import { AuthModule } from "./auth/auth.module";
 import { AuthMiddleware } from "./auth/middleware/auth.middleware";
 import { EventController } from "./event/event.controller";
 import { EventModule } from "./event/event.module";
+import { EventMealModule } from "./event-meal/event-meal.module";
+import { EventActivityModule } from "./event-activity/event-activity.module";
+import { ProductModule } from "./product/product.module";
 
 @Module({
   imports: [
@@ -44,6 +47,9 @@ import { EventModule } from "./event/event.module";
       },
     }),
     EventModule,
+    EventMealModule,
+    EventActivityModule,
+    ProductModule,
   ],
   controllers: [AppController, AuthController, EventController],
   providers: [AppService],
