@@ -1,4 +1,4 @@
-export class CreateEventDto {
+export class UpdateEventDto {
   startTime: Date;
 
   description: string;

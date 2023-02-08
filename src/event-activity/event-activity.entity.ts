@@ -15,7 +15,7 @@ export class EventActivityEntity {
   id: string;
 
   @Column({ type: "timestamp", default: () => "CURRENT_TIMESTAMP" })
-  start_time: Date;
+  startTime: Date;
 
   @Column({ type: "timestamp", default: () => "CURRENT_TIMESTAMP" })
   endTime: Date;

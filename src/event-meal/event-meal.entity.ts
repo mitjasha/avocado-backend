@@ -18,7 +18,7 @@ export class EventMealEntity {
   name: EEventMeal;
 
   @Column({ type: "timestamp", default: () => "CURRENT_TIMESTAMP" })
-  start_time: Date;
+  startTime: Date;
 
   @Column()
   weight: string;

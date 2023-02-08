@@ -4,7 +4,7 @@ import { EEvent } from "../event.enum";
 export class CreateEventDto {
   @IsNotEmpty()
   @IsEnum(EEvent)
-  event: EEvent;
+  name: EEvent;
 
   startTime: Date;
 
