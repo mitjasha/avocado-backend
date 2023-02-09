@@ -1,8 +1,17 @@
-import { Body, Controller, Get, Param, Post, UseGuards } from "@nestjs/common";
+import {
+  Body,
+  Controller,
+  Get,
+  Param,
+  Post,
+  Put,
+  UseGuards,
+} from "@nestjs/common";
 import { GetUser } from "src/auth/get-user.decorator";
 import { AuthGuard } from "src/auth/guards/auth.guard";
 import { UserEntity } from "src/auth/user.entity";
 import { CreateEventDto } from "./dto/createEvent.dto";
+import { UpdateEventDto } from "./dto/updateEvent.dto";
 import { EventEntity } from "./event.entity";
 import { EventService } from "./event.service";
 
@@ -25,5 +34,14 @@ export class EventController {
   @UseGuards(AuthGuard)
   async getEvents(@GetUser() user: UserEntity): Promise<EventEntity[]> {
     return this.eventService.getEvents(user);
+  }
+
+  @Put("/:id")
+  @UseGuards(AuthGuard)
+  async updateEvent(
+    @Param("id") id: string,
+    @Body() updateEventDto: UpdateEventDto,
+  ) {
+    return this.eventService.updateEvent(id, updateEventDto);
   }
 }
