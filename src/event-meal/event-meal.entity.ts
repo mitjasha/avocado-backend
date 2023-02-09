@@ -7,7 +7,7 @@ import {
   ManyToOne,
   PrimaryGeneratedColumn,
 } from "typeorm";
-import { EEventMeal } from "./event-mean.enum";
+import { EEventMeal } from "./event-meal.enum";
 
 @Entity({ name: "event-meal" })
 export class EventMealEntity {
