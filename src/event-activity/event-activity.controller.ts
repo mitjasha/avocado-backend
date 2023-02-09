@@ -8,8 +8,8 @@ import {
   Put,
   UseGuards,
 } from "@nestjs/common";
-import { AuthGuard } from "@nestjs/passport";
 import { GetUser } from "src/auth/get-user.decorator";
+import { AuthGuard } from "src/auth/guards/auth.guard";
 import { UserEntity } from "src/auth/user.entity";
 import { CreateEventActivityDto } from "./dto/createEventActivity.dto";
 import { UpdateEventActivityDto } from "./dto/updateEventActivity.dto";
