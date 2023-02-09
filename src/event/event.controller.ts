@@ -1,6 +1,7 @@
 import {
   Body,
   Controller,
+  Delete,
   Get,
   Param,
   Post,
@@ -43,5 +44,11 @@ export class EventController {
     @Body() updateEventDto: UpdateEventDto,
   ) {
     return this.eventService.updateEvent(id, updateEventDto);
+  }
+
+  @Delete("/:id")
+  @UseGuards(AuthGuard)
+  async deleteEvent(@Param("id") id: string) {
+    return this.eventService.deleteEvent(id);
   }
 }
