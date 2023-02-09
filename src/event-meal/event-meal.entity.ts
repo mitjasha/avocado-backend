@@ -21,7 +21,7 @@ export class EventMealEntity {
   startTime: Date;
 
   @Column()
-  weight: string;
+  weight: number;
 
   @Column()
   description: string;
