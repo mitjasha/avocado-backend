@@ -31,7 +31,7 @@ export class ProductService {
     const found = await this.productRepository.findOne({ where: { id } });
 
     if (!found) {
-      throw new NotFoundException(`Recipe with ID "${id}" not found`);
+      throw new NotFoundException(`product with ID "${id}" not found`);
     }
     return found;
   }
