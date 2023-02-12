@@ -8,7 +8,7 @@ import {
   Put,
   UseGuards,
 } from "@nestjs/common";
-import { AuthGuard } from "@nestjs/passport";
+import { AuthGuard } from "src/auth/guards/auth.guard";
 import { GetUser } from "src/auth/get-user.decorator";
 import { UserEntity } from "src/auth/user.entity";
 import { CreateProfileDto } from "./dto/createProfile.dto";
