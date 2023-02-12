@@ -61,4 +61,8 @@ export class ProfileService {
     const result = await this.profileRepository.delete({ id });
     return `Profile ${id} removed`;
   }
+
+  async getUser(id: string) {
+    return this.usersRepository.findOneBy({ id });
+  }
 }
