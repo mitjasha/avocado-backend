@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { UserEntity } from "src/auth/user.entity";
+import { Column, Entity, OneToOne, PrimaryGeneratedColumn } from "typeorm";
 import { EGender } from "./profile-gender.enum";
 import { EGoal } from "./profile-goal.enum";
 
@@ -30,4 +31,10 @@ export class ProfileEntity {
 
   @Column()
   targetWeight: number;
+
+  @Column()
+  photo: string;
+
+  @OneToOne(() => UserEntity, (user) => user.profile)
+  user: UserEntity;
 }
