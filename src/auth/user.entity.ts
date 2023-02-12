@@ -2,13 +2,16 @@ import {
   BeforeInsert,
   Column,
   Entity,
+  JoinColumn,
   OneToMany,
+  OneToOne,
   PrimaryGeneratedColumn,
 } from "typeorm";
 import * as bcrypt from "bcrypt";
 import { EventEntity } from "src/event/event.entity";
 import { EventMealEntity } from "src/event-meal/event-meal.entity";
 import { EventActivityEntity } from "src/event-activity/event-activity.entity";
+import { ProfileEntity } from "src/profile/profile.entity";
 
 @Entity()
 export class UserEntity {
@@ -37,4 +40,8 @@ export class UserEntity {
     (eventActivity) => eventActivity.id,
   )
   eventActivity: EventActivityEntity[];
+
+  @OneToOne(() => ProfileEntity)
+  @JoinColumn()
+  profile: ProfileEntity;
 }
