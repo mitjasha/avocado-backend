@@ -24,14 +24,14 @@ import { ProfileModule } from "./profile/profile.module";
       imports: [ConfigModule],
       inject: [ConfigService],
       useFactory: async (configService: ConfigService) => {
-        // const isProduction = configService.get("STAGE") === "prod";
+        const isProduction = configService.get("STAGE") === "prod";
         console.log(configService.get("DB_PASSWORD"));
 
         return {
-          // ssl: isProduction,
-          // extra: {
-          //   ssl: isProduction ? { rejectUnauthorized: false } : null,
-          // },
+          ssl: isProduction,
+          extra: {
+            ssl: isProduction ? { rejectUnauthorized: false } : null,
+          },
           type: "postgres",
           autoLoadEntities: true,
           synchronize: true,
