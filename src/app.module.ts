@@ -2,12 +2,14 @@ import { MiddlewareConsumer, Module, RequestMethod } from "@nestjs/common";
 import { ConfigModule, ConfigService } from "@nestjs/config";
 import { TypeOrmModule } from "@nestjs/typeorm";
 import { configValidationSchema } from "./config.schema";
-import { AppController } from "./app.controller";
-import { AppService } from "./app.service";
 import { RecipesModule } from "./recipes/recipes.module";
-import { AuthController } from "./auth/auth.controller";
 import { AuthModule } from "./auth/auth.module";
 import { AuthMiddleware } from "./auth/middleware/auth.middleware";
+import { EventModule } from "./event/event.module";
+import { EventMealModule } from "./event-meal/event-meal.module";
+import { EventActivityModule } from "./event-activity/event-activity.module";
+import { ProductModule } from "./product/product.module";
+import { ActivityModule } from "./activity/activity.module";
 
 @Module({
   imports: [
@@ -41,9 +43,12 @@ import { AuthMiddleware } from "./auth/middleware/auth.middleware";
         };
       },
     }),
+    EventModule,
+    EventMealModule,
+    EventActivityModule,
+    ProductModule,
+    ActivityModule,
   ],
-  controllers: [AppController, AuthController],
-  providers: [AppService],
 })
 export class AppModule {
   configure(consumer: MiddlewareConsumer) {

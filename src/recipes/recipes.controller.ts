@@ -33,11 +33,11 @@ export class RecipesController {
   }
 
   @Put("/:id")
-  async updateEvent(
+  async updateRecipe(
     @Param("id") id: string,
-    @Body() updateEventDto: UpdateRecipeDto,
+    @Body() updateRecipeDto: UpdateRecipeDto,
   ) {
-    return this.recipesService.updateRecipe(id, updateEventDto);
+    return this.recipesService.updateRecipe(id, updateRecipeDto);
   }
 
   @Delete("/:id")
