@@ -31,6 +31,6 @@ export class EventActivityEntity {
   @ManyToOne((_type) => UserEntity, (user) => user.id)
   user: UserEntity;
 
-  @ManyToMany(() => ActivityEntity, (products) => products.id)
-  products: ActivityEntity[];
+  @ManyToMany(() => ActivityEntity, (activity) => activity.id)
+  activity: ActivityEntity[];
 }

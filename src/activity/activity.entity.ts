@@ -20,5 +20,5 @@ export class ActivityEntity {
 
   @ManyToMany(() => EventActivityEntity, (eventsActivity) => eventsActivity.id)
   @JoinTable()
-  eventsMeal: EventActivityEntity[];
+  eventsActivity: EventActivityEntity[];
 }
