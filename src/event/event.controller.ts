@@ -20,18 +20,17 @@ import { EventService } from "./event.service";
 export class EventController {
   constructor(private eventService: EventService) {}
 
-  @Post(":userID/addEvent")
+  @Post("/addEvent")
   @UseGuards(AuthGuard)
   async createEvent(
-    @Param("userID") userID: string,
+    @GetUser() user: UserEntity,
     @Body()
     createEventDto: CreateEventDto,
   ): Promise<EventEntity> {
-    const child = await this.eventService.getUser(userID);
-    return this.eventService.createEvent(createEventDto, child);
+    return this.eventService.createEvent(createEventDto, user);
   }
 
-  @Get(":userID/getAllEvents")
+  @Get("/getAllEvents")
   @UseGuards(AuthGuard)
   async getEvents(@GetUser() user: UserEntity): Promise<EventEntity[]> {
     return this.eventService.getEvents(user);

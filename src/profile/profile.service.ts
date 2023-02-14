@@ -49,7 +49,7 @@ export class ProfileService {
   async getProfile(user: UserEntity): Promise<ProfileEntity[]> {
     return this.profileRepository.find({
       relations: ["user"],
-      where: { user: Equal(user) },
+      where: { user: Equal(user.id) },
     });
   }
 

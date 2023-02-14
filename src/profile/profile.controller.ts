@@ -20,18 +20,17 @@ import { ProfileService } from "./profile.service";
 export class ProfileController {
   constructor(private profileService: ProfileService) {}
 
-  @Post(":userID/addProfile")
+  @Post("/addProfile")
   @UseGuards(AuthGuard)
   async createProfile(
-    @Param("userID") userID: string,
+    @GetUser() user: UserEntity,
     @Body()
     createProfileDto: CreateProfileDto,
   ): Promise<ProfileEntity> {
-    const child = await this.profileService.getUser(userID);
-    return this.profileService.createProfile(createProfileDto, child);
+    return this.profileService.createProfile(createProfileDto, user);
   }
 
-  @Get(":userID/getAllProfiles")
+  @Get("/getAllProfiles")
   @UseGuards(AuthGuard)
   async getProfiles(@GetUser() user: UserEntity): Promise<ProfileEntity[]> {
     return this.profileService.getProfile(user);

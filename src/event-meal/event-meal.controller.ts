@@ -20,18 +20,17 @@ import { EventMealService } from "./event-meal.service";
 export class EventMealController {
   constructor(private eventService: EventMealService) {}
 
-  @Post(":userID/addEvent")
+  @Post("/addEvent")
   @UseGuards(AuthGuard)
   async createEvent(
-    @Param("userID") userID: string,
+    @GetUser() user: UserEntity,
     @Body()
     createEventDto: CreateEventMealDto,
   ): Promise<EventMealEntity> {
-    const child = await this.eventService.getUser(userID);
-    return this.eventService.createEvent(createEventDto, child);
+    return this.eventService.createEvent(createEventDto, user);
   }
 
-  @Get(":userID/getAllEvents")
+  @Get("/getAllEvents")
   @UseGuards(AuthGuard)
   async getEvents(@GetUser() user: UserEntity): Promise<EventMealEntity[]> {
     return this.eventService.getEvents(user);

@@ -33,7 +33,7 @@ export class EventService {
   async getEvents(user: UserEntity): Promise<EventEntity[]> {
     return this.eventRepository.find({
       relations: ["user"],
-      where: { user: Equal(user) },
+      where: { user: Equal(user.id) },
     });
   }
 

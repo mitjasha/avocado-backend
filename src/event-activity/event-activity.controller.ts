@@ -20,18 +20,17 @@ import { EventActivityService } from "./event-activity.service";
 export class EventActivityController {
   constructor(private eventService: EventActivityService) {}
 
-  @Post(":userID/addEvent")
+  @Post("/addEvent")
   @UseGuards(AuthGuard)
   async createEvent(
-    @Param("userID") userID: string,
+    @GetUser() user: UserEntity,
     @Body()
     createEventDto: CreateEventActivityDto,
   ): Promise<EventActivityEntity> {
-    const child = await this.eventService.getUser(userID);
-    return this.eventService.createEvent(createEventDto, child);
+    return this.eventService.createEvent(createEventDto, user);
   }
 
-  @Get(":userID/getAllEvents")
+  @Get("/getAllEvents")
   @UseGuards(AuthGuard)
   async getEvents(@GetUser() user: UserEntity): Promise<EventActivityEntity[]> {
     return this.eventService.getEvents(user);

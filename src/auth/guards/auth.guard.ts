@@ -11,7 +11,7 @@ import {
 export class AuthGuard implements CanActivate {
   canActivate(context: ExecutionContext): boolean {
     const request = context.switchToHttp().getRequest<ExpressRequest>();
-    console.log(request.user);
+    console.log(request.user, request.method, request.path);
 
     if (request.user) {
       return true;
