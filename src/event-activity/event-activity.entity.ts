@@ -4,6 +4,7 @@ import {
   BeforeUpdate,
   Column,
   Entity,
+  JoinTable,
   ManyToMany,
   ManyToOne,
   PrimaryGeneratedColumn,
@@ -31,6 +32,6 @@ export class EventActivityEntity {
   @ManyToOne((_type) => UserEntity, (user) => user.id)
   user: UserEntity;
 
-  @ManyToMany(() => ActivityEntity, (activity) => activity.id)
-  activity: ActivityEntity[];
+  @ManyToOne((_type) => ActivityEntity, (activity) => activity.id)
+  activities: ActivityEntity;
 }

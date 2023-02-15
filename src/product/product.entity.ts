@@ -4,6 +4,7 @@ import {
   Entity,
   JoinTable,
   ManyToMany,
+  OneToMany,
   PrimaryGeneratedColumn,
 } from "typeorm";
 
@@ -27,7 +28,6 @@ export class ProductEntity {
   @Column()
   fat_100g: number;
 
-  @ManyToMany(() => EventMealEntity, (eventsMeal) => eventsMeal.id)
-  @JoinTable()
-  eventsMeal: EventMealEntity[];
+  @OneToMany((_type) => EventMealEntity, (eventMeal) => eventMeal.id)
+  eventMeal: EventMealEntity[];
 }

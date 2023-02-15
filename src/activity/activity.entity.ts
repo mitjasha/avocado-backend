@@ -1,11 +1,5 @@
 import { EventActivityEntity } from "src/event-activity/event-activity.entity";
-import {
-  Column,
-  Entity,
-  JoinTable,
-  ManyToMany,
-  PrimaryGeneratedColumn,
-} from "typeorm";
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity({ name: "activity" })
 export class ActivityEntity {
@@ -18,7 +12,9 @@ export class ActivityEntity {
   @Column()
   calories_per_min: number;
 
-  @ManyToMany(() => EventActivityEntity, (eventsActivity) => eventsActivity.id)
-  @JoinTable()
-  eventsActivity: EventActivityEntity[];
+  @OneToMany(
+    (_type) => EventActivityEntity,
+    (eventActivity) => eventActivity.id,
+  )
+  eventActivity: EventActivityEntity[];
 }
