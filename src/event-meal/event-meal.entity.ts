@@ -30,5 +30,5 @@ export class EventMealEntity {
   user: UserEntity;
 
   @ManyToOne((_type) => ProductEntity, (products) => products.id)
-  products: ProductEntity;
+  product: ProductEntity;
 }

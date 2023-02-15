@@ -5,12 +5,13 @@ import { TypeOrmModule } from "@nestjs/typeorm";
 import { EventMealEntity } from "./event-meal.entity";
 import { UserEntity } from "src/auth/user.entity";
 import { ProductEntity } from "src/product/product.entity";
+import { ProductService } from "src/product/product.service";
 
 @Module({
   imports: [
     TypeOrmModule.forFeature([EventMealEntity, UserEntity, ProductEntity]),
   ],
-  providers: [EventMealService],
+  providers: [EventMealService, ProductService],
   controllers: [EventMealController],
 })
 export class EventMealModule {}

@@ -1,5 +1,5 @@
 export enum EEventMeal {
-  BREACKFAST = "breackfast",
+  BREACKFAST = "breakfast",
   DINNER = "dinner",
   LUNCH = "lunch",
   SNACK = "snack",
