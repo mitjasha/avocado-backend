@@ -28,7 +28,7 @@ export class ActivityController {
 
   @Post()
   async createActivity(
-    @Body("Activity") createActivityDto: CreateActivityDto,
+    @Body() createActivityDto: CreateActivityDto,
   ): Promise<ActivityEntity> {
     return await this.activityService.createActivity(createActivityDto);
   }
