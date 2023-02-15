@@ -8,6 +8,8 @@ import {
   Put,
   UseGuards,
 } from "@nestjs/common";
+import { ActivityEntity } from "src/activity/activity.entity";
+import { ActivityService } from "src/activity/activity.service";
 import { GetUser } from "src/auth/get-user.decorator";
 import { AuthGuard } from "src/auth/guards/auth.guard";
 import { UserEntity } from "src/auth/user.entity";
@@ -18,16 +20,21 @@ import { EventActivityService } from "./event-activity.service";
 
 @Controller("event-activity")
 export class EventActivityController {
-  constructor(private eventService: EventActivityService) {}
+  constructor(
+    private eventService: EventActivityService,
+    private activityService: ActivityService,
+  ) {}
 
-  @Post("/addEvent")
+  @Post("/addEvent/:activityId")
   @UseGuards(AuthGuard)
   async createEvent(
     @GetUser() user: UserEntity,
+    @Param("activityId") activityId: string,
     @Body()
     createEventDto: CreateEventActivityDto,
   ): Promise<EventActivityEntity> {
-    return this.eventService.createEvent(createEventDto, user);
+    const activity = await this.activityService.getActivityById(activityId);
+    return this.eventService.createEvent(createEventDto, user, activity);
   }
 
   @Get("/getAllEvents")

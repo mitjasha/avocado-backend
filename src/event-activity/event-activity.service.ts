@@ -1,5 +1,6 @@
 import { Injectable } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
+import { ActivityEntity } from "src/activity/activity.entity";
 import { UserEntity } from "src/auth/user.entity";
 import { Equal, Repository } from "typeorm";
 import { CreateEventActivityDto } from "./dto/createEventActivity.dto";
@@ -13,11 +14,14 @@ export class EventActivityService {
     private eventRepository: Repository<EventActivityEntity>,
     @InjectRepository(UserEntity)
     private usersRepository: Repository<UserEntity>,
+    @InjectRepository(ActivityEntity)
+    private activityRepository: Repository<ActivityEntity>,
   ) {}
 
   async createEvent(
     createEventDto: CreateEventActivityDto,
     user: UserEntity,
+    activity: ActivityEntity,
   ): Promise<EventActivityEntity> {
     const { startTime, endTime, description } = createEventDto;
 
@@ -26,12 +30,14 @@ export class EventActivityService {
       endTime,
       description,
       user,
+      activity,
     });
     return await this.eventRepository.save(events);
   }
+
   async getEvents(user: UserEntity): Promise<EventActivityEntity[]> {
     return this.eventRepository.find({
-      relations: ["user"],
+      relations: ["user", "activity"],
       where: { user: Equal(user.id) },
     });
   }

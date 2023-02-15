@@ -4,8 +4,6 @@ import {
   BeforeUpdate,
   Column,
   Entity,
-  JoinTable,
-  ManyToMany,
   ManyToOne,
   PrimaryGeneratedColumn,
 } from "typeorm";
@@ -33,5 +31,5 @@ export class EventActivityEntity {
   user: UserEntity;
 
   @ManyToOne((_type) => ActivityEntity, (activity) => activity.id)
-  activities: ActivityEntity;
+  activity: ActivityEntity;
 }
