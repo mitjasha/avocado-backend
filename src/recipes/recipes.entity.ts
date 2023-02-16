@@ -15,9 +15,6 @@ export class RecipesEntity {
   name: string;
 
   @Column()
-  category: string;
-
-  @Column()
   calories: string;
 
   @Column()
@@ -32,9 +29,6 @@ export class RecipesEntity {
   @Column()
   author: string;
 
-  @Column()
-  kitchen: string;
-
   @Column("jsonb")
   ingredients: Ingredients[];
 
@@ -43,6 +37,17 @@ export class RecipesEntity {
 
   @Column()
   time: number;
+  @Column()
+  category: string;
+
+  @Column()
+  kitchen: string;
+
+  @Column()
+  favorite: boolean;
+
+  @Column()
+  vegetarian: boolean;
 
   @Column()
   imageURL: string;
