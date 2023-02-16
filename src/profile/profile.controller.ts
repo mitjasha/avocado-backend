@@ -30,10 +30,9 @@ export class ProfileController {
     return this.profileService.createProfile(createProfileDto, user);
   }
 
-  @Get("/getAllProfiles")
-  @UseGuards(AuthGuard)
-  async getProfiles(@GetUser() user: UserEntity): Promise<ProfileEntity[]> {
-    return this.profileService.getProfile(user);
+  @Get("/:id")
+  async getActivityById(@Param("id") id: string): Promise<ProfileEntity> {
+    return this.profileService.getProfileById(id);
   }
 
   @Put("/:id")

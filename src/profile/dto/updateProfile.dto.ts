@@ -3,24 +3,24 @@ import { EGender } from "../profile-gender.enum";
 import { EGoal } from "../profile-goal.enum";
 
 export class UpdateProfileDto {
-  firstName?: string;
+  firstName: string;
 
-  lastName?: string;
+  lastName: string;
 
   @IsEnum(EGender)
-  gender?: EGender;
+  gender: EGender;
 
   @IsDateString()
-  birth?: string;
+  birth: string;
 
-  weight?: number;
+  weight: string;
 
-  height?: number;
+  height: number;
 
   @IsEnum(EGoal)
-  goal?: EGoal;
+  goal: EGoal;
 
-  targetWeight?: number;
+  targetWeight: string;
 
-  photo?: string;
+  photo: string;
 }

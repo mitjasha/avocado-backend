@@ -21,7 +21,7 @@ export class ProfileEntity {
   birth: Date;
 
   @Column()
-  weight: number;
+  weight: string;
 
   @Column()
   height: number;
@@ -30,7 +30,7 @@ export class ProfileEntity {
   goal: EGoal;
 
   @Column()
-  targetWeight: number;
+  targetWeight: string;
 
   @Column()
   photo: string;

@@ -18,7 +18,7 @@ export class CreateProfileDto {
   birth: string;
 
   @IsNotEmpty()
-  weight: number;
+  weight: string;
 
   @IsNotEmpty()
   height: number;
@@ -28,7 +28,7 @@ export class CreateProfileDto {
   goal: EGoal;
 
   @IsNotEmpty()
-  targetWeight: number;
+  targetWeight: string;
 
   photo: string;
 }
