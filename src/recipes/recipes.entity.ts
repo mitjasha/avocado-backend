@@ -37,6 +37,7 @@ export class RecipesEntity {
 
   @Column()
   time: number;
+
   @Column()
   category: string;
 
