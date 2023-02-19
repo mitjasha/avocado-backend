@@ -13,14 +13,14 @@ export class UpdateProfileDto {
   @IsDateString()
   birth: string;
 
-  weight: string;
+  weight: number;
 
   height: number;
 
   @IsEnum(EGoal)
   goal: EGoal;
 
-  targetWeight: string;
+  targetWeight: number;
 
   photo: string;
 }

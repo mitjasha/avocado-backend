@@ -27,16 +27,16 @@ export class ProfileEntity {
   birth: Date;
 
   @Column({ type: "decimal", precision: 5, scale: 2, nullable: true })
-  weight: string;
+  weight: number;
 
-  @Column()
+  @Column({ nullable: true })
   height: number;
 
   @Column()
   goal: EGoal;
 
   @Column({ type: "decimal", precision: 5, scale: 2, nullable: true })
-  targetWeight: string;
+  targetWeight: number;
 
   @Column()
   photo: string;
