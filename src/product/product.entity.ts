@@ -29,7 +29,7 @@ export class ProductEntity {
   @Column({ type: "decimal", precision: 5, scale: 2, nullable: true })
   fat_100g: number;
 
-  @Column()
+  @Column({ nullable: true })
   category: EProduct;
 
   @OneToMany((_type) => EventMealEntity, (eventMeal) => eventMeal.id)
