@@ -1,3 +1,5 @@
+import { EProduct } from "../product.enum";
+
 export class UpdateProductDto {
   name: string;
 
@@ -8,4 +10,6 @@ export class UpdateProductDto {
   carbs_100g: number;
 
   fat_100g: number;
+
+  category: EProduct;
 }

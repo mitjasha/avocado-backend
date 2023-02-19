@@ -1,4 +1,5 @@
 import { IsNotEmpty } from "class-validator";
+import { EProduct } from "../product.enum";
 
 export class CreateProductDto {
   @IsNotEmpty()
@@ -15,4 +16,7 @@ export class CreateProductDto {
 
   @IsNotEmpty()
   fat_100g: number;
+
+  @IsNotEmpty()
+  category: EProduct;
 }

@@ -7,6 +7,7 @@ import {
   OneToMany,
   PrimaryGeneratedColumn,
 } from "typeorm";
+import { EProduct } from "./product.enum";
 
 @Entity({ name: "product" })
 export class ProductEntity {
@@ -27,6 +28,9 @@ export class ProductEntity {
 
   @Column({ type: "decimal", precision: 5, scale: 2, nullable: true })
   fat_100g: number;
+
+  @Column()
+  category: EProduct;
 
   @OneToMany((_type) => EventMealEntity, (eventMeal) => eventMeal.id)
   eventMeal: EventMealEntity[];
