@@ -8,7 +8,7 @@ export class CreateRecipeDto {
   readonly ingredients: object[];
   readonly steps: string | (() => string);
   readonly time: number;
-  readonly category: string;
+  readonly category: string | (() => string);
   readonly kitchen: string;
   readonly favorite: boolean;
   readonly vegetarian: boolean;

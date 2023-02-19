@@ -3,7 +3,6 @@ import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
 interface Ingredients {
   quantity: string;
   name: string;
-  type: string;
 }
 
 @Entity({ name: "recipes" })
@@ -38,7 +37,7 @@ export class RecipesEntity {
   @Column()
   time: number;
 
-  @Column()
+  @Column({ array: true })
   category: string;
 
   @Column()
