@@ -1,5 +1,11 @@
 import { UserEntity } from "src/auth/user.entity";
-import { Column, Entity, OneToOne, PrimaryGeneratedColumn } from "typeorm";
+import {
+  Column,
+  Entity,
+  JoinColumn,
+  OneToOne,
+  PrimaryGeneratedColumn,
+} from "typeorm";
 import { EGender } from "./profile-gender.enum";
 import { EGoal } from "./profile-goal.enum";
 
@@ -36,5 +42,6 @@ export class ProfileEntity {
   photo: string;
 
   @OneToOne(() => UserEntity, (user) => user.profile)
+  @JoinColumn()
   user: UserEntity;
 }

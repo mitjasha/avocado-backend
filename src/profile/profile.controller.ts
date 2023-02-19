@@ -31,8 +31,13 @@ export class ProfileController {
   }
 
   @Get("/:id")
-  async getActivityById(@Param("id") id: string): Promise<ProfileEntity> {
+  async getProfileById(@Param("id") id: string): Promise<ProfileEntity> {
     return this.profileService.getProfileById(id);
+  }
+
+  @Get("/")
+  async getProfile(@GetUser() user: UserEntity): Promise<ProfileEntity[]> {
+    return this.profileService.getProfile(user);
   }
 
   @Put("/:id")
