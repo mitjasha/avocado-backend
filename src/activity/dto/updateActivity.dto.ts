@@ -1,7 +1,9 @@
-import { EActivity } from "../activity.enum";
-
 export class UpdateActivityDto {
-  name: EActivity;
+  nameRU: string;
+
+  name: string;
 
   calories_per_min: number;
+
+  image: string;
 }

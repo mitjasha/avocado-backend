@@ -1,11 +1,15 @@
-import { IsEnum, IsNotEmpty } from "class-validator";
-import { EActivity } from "../activity.enum";
+import { IsNotEmpty } from "class-validator";
 
 export class CreateActivityDto {
   @IsNotEmpty()
-  @IsEnum(EActivity)
-  name: EActivity;
+  nameRU: string;
+
+  @IsNotEmpty()
+  name: string;
 
   @IsNotEmpty()
   calories_per_min: number;
+
+  @IsNotEmpty()
+  image: string;
 }

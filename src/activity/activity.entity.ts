@@ -7,10 +7,16 @@ export class ActivityEntity {
   id: string;
 
   @Column()
+  nameRU: string;
+
+  @Column()
   name: string;
 
   @Column({ type: "decimal", precision: 5, scale: 2, nullable: true })
   calories_per_min: number;
+
+  @Column()
+  image: string;
 
   @OneToMany(
     (_type) => EventActivityEntity,
