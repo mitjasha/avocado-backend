@@ -2,7 +2,7 @@ import { Injectable } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
 import { UserEntity } from "src/auth/user.entity";
 import { ProductEntity } from "src/product/product.entity";
-import { Equal, Repository } from "typeorm";
+import { Between, Equal, Repository } from "typeorm";
 import { CreateEventMealDto } from "./dto/createEventMeal.dto";
 import { UpdateEventMealDto } from "./dto/updateEventMeal.dto";
 import { EventMealEntity } from "./event-meal.entity";
@@ -40,6 +40,21 @@ export class EventMealService {
     return this.eventRepository.find({
       relations: ["user", "product"],
       where: { user: Equal(user.id) },
+    });
+  }
+
+  async getEventsByDate(
+    user: UserEntity,
+    curDate: string,
+  ): Promise<EventMealEntity[]> {
+    const date = new Date(curDate);
+    date.setDate(date.getDate() + 1);
+
+    return this.eventRepository.find({
+      relations: ["user", "product"],
+      where: {
+        startTime: Between(new Date(curDate), date),
+      },
     });
   }
 

@@ -42,6 +42,15 @@ export class EventMealController {
     return this.eventService.getEvents(user);
   }
 
+  @Get("/getAllEvents/byDate/:curDate")
+  @UseGuards(AuthGuard)
+  async getEventsByDate(
+    @Param("curDate") curDate: string,
+    @GetUser() user: UserEntity,
+  ): Promise<EventMealEntity[]> {
+    return this.eventService.getEventsByDate(user, curDate);
+  }
+
   @Put("/:id")
   @UseGuards(AuthGuard)
   async updateEvent(
