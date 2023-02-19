@@ -9,7 +9,7 @@ export class ActivityEntity {
   @Column()
   name: string;
 
-  @Column()
+  @Column({ type: "decimal", precision: 5, scale: 2, nullable: true })
   calories_per_min: number;
 
   @OneToMany(

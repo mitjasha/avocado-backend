@@ -14,16 +14,16 @@ export class RecipesEntity {
   @Column()
   name: string;
 
-  @Column()
+  @Column({ type: "decimal", precision: 5, scale: 2 })
   calories: string;
 
-  @Column()
+  @Column({ type: "decimal", precision: 5, scale: 2 })
   proteins: string;
 
-  @Column()
+  @Column({ type: "decimal", precision: 5, scale: 2 })
   carbs: string;
 
-  @Column()
+  @Column({ type: "decimal", precision: 5, scale: 2 })
   fats: string;
 
   @Column()

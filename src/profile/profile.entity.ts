@@ -20,7 +20,7 @@ export class ProfileEntity {
   @Column()
   birth: Date;
 
-  @Column()
+  @Column({ type: "decimal", precision: 5, scale: 2, nullable: true })
   weight: string;
 
   @Column()
@@ -29,7 +29,7 @@ export class ProfileEntity {
   @Column()
   goal: EGoal;
 
-  @Column()
+  @Column({ type: "decimal", precision: 5, scale: 2, nullable: true })
   targetWeight: string;
 
   @Column()
