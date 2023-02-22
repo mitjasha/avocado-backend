@@ -1,3 +1,5 @@
+import { IsBoolean } from "class-validator";
+
 export class CreateRecipeDto {
   readonly name: string;
   readonly calories: string;
@@ -10,7 +12,9 @@ export class CreateRecipeDto {
   readonly time: number;
   readonly category: string | (() => string);
   readonly kitchen: string;
+  @IsBoolean()
   readonly favorite: boolean;
+  @IsBoolean()
   readonly vegetarian: boolean;
   readonly imageURL: string;
 }

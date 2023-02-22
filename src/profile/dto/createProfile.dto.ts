@@ -23,4 +23,8 @@ export class CreateProfileDto {
   targetWeight: number;
 
   photo: string;
+
+  favorites: string | (() => string);
+
+  recentRecipes: string | (() => string);
 }

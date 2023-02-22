@@ -41,6 +41,12 @@ export class ProfileEntity {
   @Column()
   photo: string;
 
+  @Column({ array: true, nullable: true })
+  favorites: string;
+
+  @Column({ array: true, nullable: true })
+  recentRecipes: string;
+
   @OneToOne(() => UserEntity, (user) => user.profile)
   @JoinColumn()
   user: UserEntity;
