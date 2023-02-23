@@ -22,11 +22,6 @@ export class EventActivityEntity {
   @Column()
   description: string;
 
-  @BeforeUpdate()
-  updateTimestamp() {
-    this.endTime = new Date();
-  }
-
   @ManyToOne((_type) => UserEntity, (user) => user.id)
   user: UserEntity;
 
