@@ -50,7 +50,7 @@ export class EventActivityService {
     date.setDate(date.getDate() + 1);
 
     return this.eventRepository.find({
-      relations: ["user", "product"],
+      relations: ["user", "activity"],
       where: {
         startTime: Between(new Date(curDate), date),
       },
