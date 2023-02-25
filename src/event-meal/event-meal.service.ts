@@ -54,6 +54,7 @@ export class EventMealService {
       relations: ["user", "product"],
       where: {
         startTime: Between(new Date(curDate), date),
+        user: Equal(user.id),
       },
     });
   }

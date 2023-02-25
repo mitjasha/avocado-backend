@@ -57,7 +57,7 @@ export class ProfileService {
     const found = await this.profileRepository.findOne({ where: { id } });
 
     if (!found) {
-      throw new NotFoundException(`activity with ID "${id}" not found`);
+      throw new NotFoundException(`profile with ID "${id}" not found`);
     }
     return found;
   }

@@ -53,6 +53,7 @@ export class EventActivityService {
       relations: ["user", "activity"],
       where: {
         startTime: Between(new Date(curDate), date),
+        user: Equal(user.id),
       },
     });
   }

@@ -45,9 +45,10 @@ export class EventService {
     date.setDate(date.getDate() + 1);
 
     return this.eventRepository.find({
-      relations: ["user", "product"],
+      relations: ["user"],
       where: {
         startTime: Between(new Date(curDate), date),
+        user: Equal(user.id),
       },
     });
   }
