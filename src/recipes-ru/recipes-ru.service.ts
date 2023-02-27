@@ -1,22 +1,22 @@
 import { Injectable, NotFoundException } from "@nestjs/common";
-import { RecipesEntity } from "./recipes.entity";
+import { RecipesRUEntity } from "./recipes-ru.entity";
 import { Repository } from "typeorm";
 import { InjectRepository } from "@nestjs/typeorm";
-import { CreateRecipeDto } from "./dto/createRecipe.dto";
-import { UpdateRecipeDto } from "./dto/updateRecipe.dto";
+import { CreateRecipeRUDto } from "./dto/createRecipeRU.dto";
+import { UpdateRecipeRUDto } from "./dto/updateRecipeRU.dto";
 
 @Injectable()
-export class RecipesService {
+export class RecipesRUService {
   constructor(
-    @InjectRepository(RecipesEntity)
-    private readonly recipesRepository: Repository<RecipesEntity>,
+    @InjectRepository(RecipesRUEntity)
+    private readonly recipesRepository: Repository<RecipesRUEntity>,
   ) {}
 
-  async findAll(): Promise<RecipesEntity[]> {
+  async findAll(): Promise<RecipesRUEntity[]> {
     return await this.recipesRepository.find();
   }
 
-  async getRecipeById(id: string): Promise<RecipesEntity> {
+  async getRecipeById(id: string): Promise<RecipesRUEntity> {
     const found = await this.recipesRepository.findOne({ where: { id } });
 
     if (!found) {
@@ -25,15 +25,15 @@ export class RecipesService {
     return found;
   }
 
-  async createRecipe(createRecipeDto: CreateRecipeDto): Promise<any> {
-    const newRecipe = new RecipesEntity();
+  async createRecipe(createRecipeDto: CreateRecipeRUDto): Promise<any> {
+    const newRecipe = new RecipesRUEntity();
     Object.assign(newRecipe, createRecipeDto);
     console.log("newRecipe", newRecipe);
 
     return await this.recipesRepository.save(newRecipe);
   }
 
-  async updateRecipe(id: string, updateRecipeDto: UpdateRecipeDto) {
+  async updateRecipe(id: string, updateRecipeDto: UpdateRecipeRUDto) {
     return await this.recipesRepository.update(id, updateRecipeDto);
   }
 
