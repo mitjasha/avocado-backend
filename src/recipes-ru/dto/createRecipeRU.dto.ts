@@ -1,6 +1,6 @@
 import { IsBoolean } from "class-validator";
 
-export class CreateRecipeDtoRU {
+export class CreateRecipeRUDto {
   readonly name: string;
   readonly calories: string;
   readonly proteins: string;

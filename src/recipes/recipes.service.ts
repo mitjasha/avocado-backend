@@ -39,6 +39,6 @@ export class RecipesService {
 
   async deleteRecipe(id: string) {
     const result = await this.recipesRepository.delete({ id });
-    return `event ${id} removed`;
+    return `recipe ${id} removed`;
   }
 }
