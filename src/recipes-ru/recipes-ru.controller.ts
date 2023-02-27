@@ -13,7 +13,7 @@ import { RecipesRUEntity } from "./recipes-ru.entity";
 import { RecipesRUService } from "./recipes-ru.service";
 
 @Controller("recipes-ru")
-export class RecipesController {
+export class RecipesRUController {
   constructor(private readonly recipesService: RecipesRUService) {}
   @Get()
   async findAll(): Promise<RecipesRUEntity[]> {

@@ -1,9 +1,12 @@
-import { Module } from '@nestjs/common';
-import { RecipesRuService } from './recipes-ru.service';
-import { RecipesRuController } from './recipes-ru.controller';
+import { Module } from "@nestjs/common";
+import { RecipesRUService } from "./recipes-ru.service";
+import { RecipesRUController } from "./recipes-ru.controller";
+import { TypeOrmModule } from "@nestjs/typeorm";
+import { RecipesRUEntity } from "./recipes-ru.entity";
 
 @Module({
-  providers: [RecipesRuService],
-  controllers: [RecipesRuController]
+  imports: [TypeOrmModule.forFeature([RecipesRUEntity])],
+  providers: [RecipesRUService],
+  controllers: [RecipesRUController],
 })
 export class RecipesRuModule {}
