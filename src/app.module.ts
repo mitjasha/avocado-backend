@@ -11,6 +11,7 @@ import { EventActivityModule } from "./event-activity/event-activity.module";
 import { ProductModule } from "./product/product.module";
 import { ActivityModule } from "./activity/activity.module";
 import { ProfileModule } from "./profile/profile.module";
+import { RecipesRuModule } from './recipes-ru/recipes-ru.module';
 
 @Module({
   imports: [
@@ -50,6 +51,7 @@ import { ProfileModule } from "./profile/profile.module";
     ProductModule,
     ActivityModule,
     ProfileModule,
+    RecipesRuModule,
   ],
 })
 export class AppModule {
